@@ -95,11 +95,11 @@ LexFn
    val ord = fn (_, c) => Int.min (128, Char.ord c)
    type t = (token * pos) Stream.front
 
-   type self = { lexmain : symbol Streamable.t -> (token * pos) Stream.front }
+   type self = { lexmain : symbol Stream.stream -> (token * pos) Stream.front }
    type info = { match : symbol list,
                  len : int,
-                 start : symbol Streamable.t,
-                 follow : symbol Streamable.t,
+                 start : symbol Stream.stream,
+                 follow : symbol Stream.stream,
                  self : self }
 
    fun posrange (toks: symbol list) = 

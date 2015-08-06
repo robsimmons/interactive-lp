@@ -82,4 +82,15 @@ struct
            end
     *)
 
+  fun go (name, args) = 
+  let val () = print "Ceptre!\n"
+  in
+     case args of 
+        [ fname ] =>
+          (ignore (runFirst fname); 
+           OS.Process.success)
+      | _ => 
+          (print ("Usage: "^CommandLine.name ()^" CEPTREFILE.cep\n");
+           OS.Process.failure)
+  end
 end
